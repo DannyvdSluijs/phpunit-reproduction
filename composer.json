@@ -1,0 +1,36 @@
+{
+    "name": "dannyvandersluijs/phpunit-reproduction",
+    "authors": [
+        {
+            "name": "Danny van der Sluijs",
+            "email": "danny.vandersluijs@icloud.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "symfony/http-foundation": "^4.3",
+        "phpunit/phpcov": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3",
+        "phpunit/php-code-coverage": "7.0.7",
+        "codeception/codeception": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Reproduction\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Reproduction\\Tests\\Unit\\": "tests/unit/"
+        }
+    },
+    "scripts": {
+        "unit-test": [
+            "./vendor/bin/phpunit --dump-xdebug-filter tests/xdebug-filter.php",
+            "./vendor/bin/codecept run unit --xml=unit.xml --coverage=unit.cov --bootstrap=tests/xdebug-filter.php",
+            "./vendor/bin/phpcov merge tests/_output --html build/coverage"
+        ]
+    }
+}

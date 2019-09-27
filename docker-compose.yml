@@ -1,0 +1,7 @@
+version: "3"
+services:
+  php:
+    build: ./.docker/php74
+    volumes:
+      - ./:/var/www/:cached
+      - ./public:/var/www/html:cached
